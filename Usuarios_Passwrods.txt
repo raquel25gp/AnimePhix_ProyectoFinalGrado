@@ -1,0 +1,19 @@
+Usuarios creados para pruebas
+------------------------------
+
+Usuario superadministrador: admin@gmail.com - Contraseña: Admin1234
+
+Usuarios administradores:
+	- shivita@ejemplogmail1.com - Contraseña: Admin1234
+	- saul@ejemplogmail2.com - Contraseña: Admin1234
+
+Usuarios registrados:
+	Habilitados:
+		- auronplay@ejemplogmail3.com - Contraseña: Admin1234
+		- eledu@ejemplogmail5.com - Contraseña: Admin1234
+		- anaisabelgarmendia@ejemplogmail6.com - Contraseña: Admin1234
+	Deshabilitados:
+		- carola@ejemplogmail4.com - Contraseña: Admin1234
+		- rober@ejemplogmail7.com - Contraseña: Admin1234
+
+*El uso de estos usuarios no limita poder hacer tu propia cuenta en AnimePhix*
