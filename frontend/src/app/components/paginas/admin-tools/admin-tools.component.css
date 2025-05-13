@@ -1,0 +1,38 @@
+a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+a:hover {
+    background-color: lightgrey;
+    color: black;
+}
+
+:host {
+    position: absolute;
+    top: 120px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.tab-content {
+    height: 100vh;
+    overflow: auto;
+}
+
+@media (max-width: 990px) {
+    :host {
+        position: static;
+        top: auto;
+        bottom: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    .tab-content {
+        height: auto;
+        overflow: visible;
+    }
+}

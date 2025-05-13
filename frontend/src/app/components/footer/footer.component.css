@@ -1,0 +1,26 @@
+a {
+    font-weight: bold;
+}
+
+a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#enlaces li {
+    margin-right: 2rem;
+}
+
+#redesSociales {
+    font-size: 1.1rem;
+}
+
+#redesSociales ul li {
+    margin-right: 1rem;
+}
+
+@media (max-width: 1200px) {
+    #redesSociales ul li {
+        margin-right: 0.5rem;
+    }
+}

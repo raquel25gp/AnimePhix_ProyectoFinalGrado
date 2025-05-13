@@ -1,0 +1,13 @@
+#tituloAnime {
+    color: rgb(23, 33, 120);
+    font-size: 1.7rem;
+    width: 12rem;
+}
+
+p {
+    text-align: justify;
+}
+
+span {
+    color: rgb(1, 96, 96);
+}

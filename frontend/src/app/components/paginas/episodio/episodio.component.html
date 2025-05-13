@@ -1,0 +1,12 @@
+<div id="contenedor" class="container my-4">
+    <app-video *ngIf="datosEpisodio"
+        id="video"
+        [nombre]="nombreAnime"
+        [numEpisodio]="numEpisodio"
+        [urlPoster]="datosEpisodio.urlPoster"
+        [urlVideo]="datosEpisodio.urlVideo"
+        [totalEpisodios]="totalEpisodios"></app-video>
+    <app-comentario id="comentario"
+        [nombreAnime]="nombreAnime"
+        [numEpisodio]="numEpisodio"></app-comentario>
+</div>

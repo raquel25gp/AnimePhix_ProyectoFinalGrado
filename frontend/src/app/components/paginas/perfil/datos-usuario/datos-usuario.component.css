@@ -1,0 +1,59 @@
+div {
+    margin-left: 1rem;
+}
+
+#titulo {
+    color: rgb(23, 33, 120);
+    font-size: 1.7rem;
+    width: 12rem;
+}
+
+input {
+    width: 20rem;
+    margin: 1rem;
+    padding: 0.3rem;
+}
+
+.error {
+    margin-left: 1rem;
+    color: rgb(183, 37, 37);
+}
+
+@media (min-width: 761px) and (max-width: 1000px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "bloqueImagen datos"
+            ". botones";
+        grid-template-columns: 30% 1fr;
+        grid-template-rows: 1fr 35%;
+    }
+
+    #bloqueImagen {
+        grid-area: bloqueImagen;
+        text-align: center;
+    }
+
+    #datos {
+        grid-area: datos;
+        width: 50vw;
+    }
+
+    #botones {
+        grid-area: botones;
+        margin-bottom: 2rem;
+    }
+
+    #imagenPerfil {
+        width: 15vw;
+    }
+}
+
+@media (max-width: 760px) {
+    div {
+        width: 85vw;
+    }
+
+    input {
+        width: 64vw;
+    }
+}

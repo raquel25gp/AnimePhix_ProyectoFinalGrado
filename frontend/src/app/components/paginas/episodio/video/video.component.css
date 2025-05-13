@@ -1,0 +1,56 @@
+#contenedor {
+    max-width: 90vw;
+    padding: 0;
+}
+
+h3 {
+    color: rgb(23, 33, 120);
+    border: 3px solid rgb(23, 33, 120);
+}
+
+i {
+    font-size: 2rem;
+    padding: 0 1rem;
+}
+
+#botones {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 760px) {
+    #botones {
+        display: grid;
+        grid-template-areas: "botonIzq botonPrin botonDer"
+            ". botonVisto .";
+        grid-template-columns: 20% 1fr 20%;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        gap: 10px;
+    }
+
+    #botonIzq {
+        grid-area: botonIzq;
+        max-width: 20vw;
+    }
+
+    #botonPrin {
+        grid-area: botonPrin;
+        max-width: 40vw;
+    }
+
+    #botonDer {
+        grid-area: botonDer;
+        max-width: 20vw;
+    }
+
+    #botonVisto {
+        grid-area: botonVisto;
+        max-width: 50vw;
+    }
+
+    i {
+    font-size: 2rem;
+    padding: 0;
+}
+}

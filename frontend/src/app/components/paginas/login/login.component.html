@@ -1,0 +1,52 @@
+<div id="contenedor" class="container p-4">
+    <h2 class="text-xl font-bold mb-4">Iniciar sesión</h2>
+    <form (submit)="iniciarSesion(); $event.preventDefault()"
+        class="d-flex flex-column">
+        <input class="w-75"
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Email"
+            required
+            email
+            #emailRef="ngModel">
+        <div *ngIf="emailRef.invalid && emailRef.touched" class="error">
+            <p *ngIf="emailRef.errors?.['required']">El email es
+                obligatorio.</p>
+            <p *ngIf="emailRef.errors?.['email']">El formato no es válido.</p>
+        </div>
+        <div class="d-flex">
+            <input class="w-75"
+                [type]="flag ? 'text' : 'password'"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="Contraseña"
+                required>
+            <i
+                class="fa-solid"
+                [ngClass]="flag ? 'fa-eye-slash' : 'fa-eye'"
+                (click)="mostrarPassword()"></i>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit"
+                class="py-2 rounded w-25">
+                Iniciar sesión
+            </button>
+            <a class="text-decoration-none fw-semibold" 
+                routerLink="/registrar"
+                routerLinkActive="active">
+                ¿No tienes cuenta? ¡Registrate!
+            </a>
+        </div>
+        <a class="text-decoration-none fw-semibold text-dark mt-3 ms-3"
+            routerLink="/recuperar-password"
+            routerLinkActive="active">
+            ¿Has olvidado la contraseña? Haz clic aquí.
+        </a>
+        <div *ngIf="error"
+            class="container bg-danger text-white p-2 border border-black rounded w-75 mt-3 mb-0 text-center">
+            {{ error }}
+        </div>
+    </form>
+</div>

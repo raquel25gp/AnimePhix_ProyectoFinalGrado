@@ -1,0 +1,111 @@
+<div class="scrollable-content">
+    <div class="d-flex justify-content-start my-4">
+        <p
+            [ngClass]="mensajeError ? 'container bg-light rounded text-danger p-2 text-center w-auto' 
+                                    : 'container bg-light rounded text-success p-2 text-center w-auto'"
+            *ngIf="mensaje">
+            {{ mensaje }}
+        </p>
+    </div>
+    <div class="scrollable-list">
+        <div *ngIf="listadoComentariosOcultos.length === 0"
+            class="alert alert-danger w-50 mt-4">
+            <span>No hay comentarios ocultos.</span>
+        </div>
+        <ul *ngFor="let comentario of listadoComentariosOcultos; let i = index"
+            class="mb-3 me-3 list-unstyled">
+            <li id="contenedorLista"
+                class="border border-dark rounded bg-light px-3 py-2 mb-2">
+                <a
+                    class="fw-bold text-dark">
+                    ID:&nbsp;&nbsp;{{ comentario.idComentario }}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    Episodio:&nbsp;&nbsp;{{ comentario.episodio.anime.nombre }}
+                    Nº {{ comentario.episodio.numEpisodio }}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    Fecha: {{ comentario.fechaCreacion | date:'dd-MM-yyyy' }}
+                </a>
+                <div id="contenedorIconos">
+                    <i class="fa-solid fa-book-open text-primary me-3"
+                        title="Editar"
+                        data-toggle="collapse"
+                        [attr.data-target]="'#collapse' + i"></i>
+                    <i class="fa-solid fa-eye-low-vision"
+                        title="Habilitar"
+                        (click)="cambiarVisibilidad(comentario)"></i>
+                </div>
+            </li>
+            <div class="collapse" [id]="'collapse' + i">
+                <div class="card card-body d-flex flex-column">
+                    <div class="estructura">
+                        <label for="idComentario">Comentario ID</label>
+                        <input id="idComentario"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.idComentario"
+                            disabled>
+                    </div>
+                    <div class="estructura">
+                        <label for="idAnime">Anime ID</label>
+                        <input id="idAnime"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.episodio.anime.idAnime"
+                            disabled>
+                        <label for="nombreAnime">Anime</label>
+                        <input id="nombreAnime"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.episodio.anime.nombre"
+                            disabled>
+                    </div>
+                    <div class="estructura">
+                        <label for="numEpisodio">Número de episodio</label>
+                        <input id="numEpisodio"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.episodio.numEpisodio"
+                            disabled>
+                    </div>
+                    <div class="estructura">
+                        <label for="habilitado">Visibilidad</label>
+                        <input id="habilitado"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.habilitado"
+                            disabled>
+                    </div>
+                    <div class="estructura">
+                        <label for="fechaCreacion">Fecha de creación</label>
+                        <input id="fechaCreacion"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.fechaCreacion | date:'dd-MM-yyyy HH:ss'"
+                            disabled>
+                    </div>
+                    <div class="estructura">
+                        <label for="texto">Comentario</label>
+                        <textarea id="texto"
+                            rows="5"
+                            [value]="comentario.comentario"
+                            disabled></textarea>
+                    </div>
+                    <div class="estructura">
+                        <label for="nombreUsuario">Nombre de usuario</label>
+                        <input id="nombreUsuario"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.usuario.nombre"
+                            disabled>
+                        <label for="email">Email</label>
+                        <input id="email"
+                            class="inputFormulario"
+                            type="text"
+                            [value]="comentario.usuario.email"
+                            disabled>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

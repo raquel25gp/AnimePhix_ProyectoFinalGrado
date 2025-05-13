@@ -1,0 +1,86 @@
+#contenedor {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+    max-width: 75vw;
+    width: 50vw;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    width: 20vw;
+}
+
+button {
+    background-color: rgb(23, 33, 120);
+    border-color: rgb(23, 33, 120);
+    max-width: 25vw;
+    width: 10vw;
+}
+
+button:active {
+    background-color: rgb(55, 64, 150);
+}
+
+.error {
+    margin: 0;
+    padding: 0;
+    color: rgb(183, 37, 37);
+}
+
+@media (min-width: 770px) and (max-width: 1200px) {
+    #contenedor {
+        width: 75vw;
+    }
+
+    input, select {
+        width: 35vw;
+    }
+
+    button {
+        max-width: 30vw;
+        width: 15vw;
+    }
+}
+
+@media (min-width: 460px) and (max-width: 769px) {
+    #contenedor {
+        max-width: 90vw;
+        width: 80vw;
+    }
+
+    input, select {
+        width: 50vw;
+    }
+
+    button {
+        max-width: 60vw;
+        width: 30vw;
+    }
+}
+
+@media (max-width: 459px) {
+    #contenedor {
+        max-width: 90vw;
+        width: 80vw;
+    }
+
+    input, select {
+        width: 65vw;
+    }
+
+    textarea {
+        padding: 20rem;
+    }
+
+    button {
+        max-width: 60vw;
+        width: 50vw;
+    }
+}

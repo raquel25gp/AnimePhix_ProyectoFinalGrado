@@ -1,0 +1,53 @@
+<div id="contenedor" class="container">
+    <h3 class="mt-2 mb-4 w-100 bg-light rounded p-2 text-center">
+        {{nombre}} Nº{{numEpisodio}}
+    </h3>
+    <!--La clase ratio mantiene la proporcion del video haciendolo responsivo-->
+    <video *ngIf="urlVideo !== ''; else noEncontrado"
+        class="ratio ratio-16x9"
+        controls
+        [poster]="urlPoster">
+        <source [src]="urlVideo" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+
+    <!--Controles de paginación-->
+    <div id="botones" class="mt-4">
+        <button id="botonIzq"
+            class="btn btn-dark text-white"
+            [routerLink]="['/anime', nombre, 'episodio', numEpisodio - 1]"
+            [disabled]="numEpisodio === 1">
+            <i class="fa-solid fa-circle-left" title="Anterior episodio"></i>
+        </button>
+        <button id="botonPrin"
+            class="btn btn-info text-black"
+            style="width: 18rem;"
+            [routerLink]="['/anime', nombre]">
+            Página principal
+        </button>
+        <button id="botonDer"
+            class="btn btn-dark text-white"
+            [routerLink]="['/anime', nombre, 'episodio', numEpisodio + 1]"
+            [disabled]="numEpisodio === totalEpisodios">
+            <i class="fa-solid fa-circle-right" title="Siguiente episodio"></i>
+        </button>
+        <button *ngIf="estaLogueado"
+            id="botonVisto"
+            class="btn btn-warning text-dark"
+            (click)="modificarEstadoEpisodio()">
+            {{ texto }}
+        </button>
+        <button *ngIf="!estaLogueado"
+            id="botonVisto"
+            class="btn btn-warning text-dark"
+            (click)="mostrarMensaje()">
+            Marcar como visto
+        </button>
+    </div>
+</div>
+
+<ng-template #noEncontrado>
+    <div class="alert alert-danger mt-4 w-50" style="margin-bottom: 21.2rem;">
+        Se ha producido un error al cargar el video.
+    </div>
+</ng-template>

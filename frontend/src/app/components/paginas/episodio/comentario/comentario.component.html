@@ -1,0 +1,69 @@
+<div id="contenedor" class="container">
+    <h3 class="mb-4 bg-light">
+        Deja aquí tu comentario
+    </h3>
+    <textarea [(ngModel)]="texto"
+        class="form-control border-dark"
+        rows="3"
+        placeholder="Escribe tu comentario aquí...">
+    </textarea>
+    <br />
+    <div class="d-flex align-items-center justify-content-between">
+        <button *ngIf="estaLogueado"
+            class="btn btn-success mb-4"
+            (click)="crearComentario()"
+            [disabled]="!texto.trim()">
+            Publicar
+        </button>
+        <button *ngIf="!estaLogueado"
+            class="btn btn-success mb-4"
+            (click)="mostrarMensaje()"
+            [disabled]="!texto.trim()">
+            Publicar
+        </button>
+        <button id="botonComentarios"
+            class="btn btn-dark mb-4"
+            (click)="mostrarComentarios()">
+            {{ estado ? 'Ocultar' : 'Mostrar' }} comentarios
+        </button>
+    </div>
+    <p
+        [ngClass]="mensajeError ? 'container text-danger text-center' 
+                            : 'container text-success text-center'"
+        *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+    <div *ngIf="comentarios.length > 0 && estado">
+        <div
+            *ngFor="let comentario of comentarios"
+            class="card mb-2 shadow-sm border-info">
+            <div class="card-body bg-light">
+                <div class="d-flex justify-content-end">
+                    <i *ngIf="datosUsuario?.rol?.idRol == 1"
+                        class="fa-solid fa-eye-slash card-text text-danger me-3"
+                        (click)="cambiarVisibilidad(comentario)"
+                        title="Ocultar/Mostrar"></i>
+                    <p class="card-text text-muted small m-0">
+                        {{ comentario.fechaCreacion }}
+                    </p>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <img [src]="comentario.urlImagen"
+                        alt="Avatar"
+                        class="me-2">
+                    <h6 class="card-title m-0">
+                        {{ comentario.nombreUsuario}}:
+                    </h6>
+                    <p class="card-text ms-3">{{ comentario.comentario }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="comentarios.length === 0" class="text-muted mb-2">
+        Aún no hay comentarios. ¡Sé el primero/a!
+    </div>
+
+</div>

@@ -1,0 +1,124 @@
+#contenedor {
+    width: 60vw;
+}
+
+h2 {
+    color: rgb(23, 33, 120);
+}
+
+.estructura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 15px;
+}
+
+label {
+    width: 17vw;
+    text-align: left;
+}
+
+.inputFormulario {
+    width: 22vw;
+}
+
+#botonCrear {
+    background-color: rgb(23, 33, 120);
+    border-color: rgb(23, 33, 120);
+    color: white;
+    width: 20vw;
+}
+
+#botonCrear:hover,
+#botonCrear:active {
+    background-color: aqua;
+    color: rgb(23, 33, 120);
+    font-weight: 630;
+}
+
+.inputFormulario,
+textarea,
+select,
+option #botonCrear {
+    margin: 0.8rem;
+    padding: 0.3rem;
+}
+
+.error {
+    margin-left: 28vw;
+    color: rgb(183, 37, 37);
+    width: 20vw;
+}
+
+@media (min-width: 791px) and (max-width: 1200px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    margin-left: 13vw;
+  }
+
+  label {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    width: 30vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 571px) and (max-width: 790px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+
+  label {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    width: 50vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 570px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+
+  label {
+    width: 50vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    margin-left: 0;
+    width: 50vw;
+  }
+
+  #botonCrear {
+    width: 50vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,71 @@
+ <div *ngIf="listadoCorregidos.length === 0"
+    class="alert alert-danger w-75 mt-4">
+    <span>No hay reportes corregidos.</span>
+</div>
+<ul *ngFor="let reporte of listadoCorregidos; let i = index"
+    class="mb-3 me-3 list-unstyled mt-3">
+    <li id="contenedorLista"
+        class="border border-dark rounded bg-success text-white px-3 py-2 mb-2">
+        <span class="fw-bold">
+            Id:&nbsp;&nbsp;{{ reporte.idReporte }}&nbsp;&nbsp; -- &nbsp;&nbsp;
+            Tipo de problema:&nbsp;&nbsp;{{ reporte.tipoProblema }}
+        </span>
+        <div id="contenedorIconos">
+            <i class="fa-solid fa-book-open text-white me-3"
+                title="Ver"
+                data-toggle="collapse"
+                [attr.data-target]="'#collapse' + i"></i>
+            <i class="fa-solid fa-x text-danger me-3"
+                title="Hacer pendiente"
+                (click)="marcarPendiente(reporte.idReporte)"></i>
+        </div>
+    </li>
+    <div class="collapse" [id]="'collapse' + i">
+        <div class="card card-body">
+            <form class="d-flex flex-column">
+                <div class="estructura">
+                    <label for="idReporte">Id del reporte</label>
+                    <input id="idReporte"
+                        class="mt-2 inputFormulario"
+                        type="text"
+                        [value]="reporte.idReporte"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion"
+                        class="form-control border-dark"
+                        [value]="reporte.descripcion"
+                        name="descripcion"
+                        rows="5"
+                        disabled>
+                    </textarea>
+                </div>
+                <div class="estructura">
+                    <label for="corregido">Corregido</label>
+                    <input id="corregido"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="reporte.corregido ? 'Corregido' : 'Pendiente'"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="tipoProblema">Ubicación del problema</label>
+                    <input id="tipoProblema"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="reporte.tipoProblema"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="emailUsuario">Usuario emisor</label>
+                    <input id="emailUsuario"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="reporte.emailUsuario"
+                        disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+</ul>

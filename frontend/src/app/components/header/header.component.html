@@ -1,0 +1,114 @@
+<nav id="barra" class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+    <div class="container">
+        <a class="navbar-brand pb-0 me-4 sombreado"
+            routerLink="/inicio"
+            routerLinkActive="active">
+            <img id="logo" src="logo_v2.png" type="image/png" alt="logo" />
+        </a>
+        <button
+            id="botonCollapse"
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+            id="navbarSupportedContent">
+            <ul class="navbar-nav align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link me-4 sombreado"
+                        routerLink="/inicio"
+                        routerLinkActive="active">
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link me-4 sombreado"
+                        routerLink="/directorio"
+                        routerLinkActive="active">
+                        Listado de animes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf="estaLogueado"
+                        class="nav-link me-4 sombreado"
+                        routerLink="/calendario"
+                        routerLinkActive="active">
+                        Calendario
+                    </a>
+                    <a *ngIf="!estaLogueado"
+                        class="nav-link me-4 sombreado"
+                        (click)="mostrarMensaje()">
+                        Calendario
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form class="d-flex align-items-center me-4">
+                        <input
+                            class="form-control me-2"
+                            type="search"
+                            [(ngModel)]="animeBuscado"
+                            (keydown.enter)="buscarAnime()"
+                            name="animeBuscado"
+                            placeholder="Buscar..."
+                            aria-label="Search" />
+                        <button id="botonEnviar"
+                            class="btn btn-outline-success"
+                            type="button"
+                            (click)="buscarAnime()"
+                            title="Buscar">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </li>
+                <li id="login" class="nav-item">
+                    <a *ngIf="!estaLogueado"
+                        class="nav-link d-flex align-items-center sombreado"
+                        routerLink="/iniciarSesion"
+                        routerLinkActive="active">
+                        <i class="fa-regular fa-user me-2"></i>
+                        Iniciar sesión
+                    </a>
+                    <div *ngIf="estaLogueado" class="dropdown show">
+                        <a
+                            class="nav-link d-flex align-items-center dropdown-toggle sombreado"
+                            role="button"
+                            id="dropdownMenuLink"
+                            data-toggle="dropdown">
+                            <i class="fa-regular fa-user me-2"></i>
+                            {{ datosUsuario?.nombre }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item"
+                                routerLink="/perfil"
+                                routerLinkActive="active">
+                                Perfil
+                            </a>
+                            <a class="dropdown-item"
+                                routerLink="/favoritos"
+                                routerLinkActive="active">
+                                Lista de favoritos
+                            </a>
+                            <a *ngIf="datosUsuario?.rol?.idRol === 1"
+                                class="dropdown-item"
+                                routerLink="/admin-tools"
+                                routerLinkActive="active">
+                                Admin Tools
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"
+                                (click)="cerrarSesion()">
+                                Cerrar sesión
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

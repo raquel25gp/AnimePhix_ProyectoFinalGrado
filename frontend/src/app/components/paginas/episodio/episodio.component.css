@@ -1,0 +1,52 @@
+#contenedor {
+    display: grid;
+    grid-template-areas: "video comentario";
+    grid-template-columns: 70% 30%;
+    gap: 10px;
+}
+
+#video {
+    grid-area: video;
+}
+
+#comentario {
+    grid-area: comentario;
+}
+
+@media (min-width: 761px) and (max-width: 1200px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "video"
+                "comentario";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 10px;
+    }
+
+    #video {
+        grid-area: video;
+    }
+
+    #comentario {
+        grid-area: comentario;
+    }
+}
+
+@media (max-width: 762px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "video"
+                "comentario";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        max-width: 90vw;
+    }
+
+    #video {
+        grid-area: video;
+    }
+
+    #comentario {
+        grid-area: comentario;
+    }
+}

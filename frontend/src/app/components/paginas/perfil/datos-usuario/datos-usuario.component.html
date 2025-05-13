@@ -1,0 +1,43 @@
+<div class="container border border-dark mt-4 bg-light p-3">
+    <h3 id="titulo"
+        class="mb-4 border-bottom border-dark w-100">
+        Datos del perfil
+    </h3>
+    <h5 class="ms-3">Nombre de usuario</h5>
+    <input class="ms-3 mb-3"
+        type="text"
+        [value]="nombre"
+        [disabled]="estadoModificar"
+        [(ngModel)]="nuevoNombre"
+        name="nombre"
+        minlength="3"
+        maxlength="20"
+        #nombreRef="ngModel">
+    <div *ngIf="nombreRef.invalid && nombreRef.touched" class="error">
+        <p *ngIf="nombreRef.errors?.['minlength']">Debe tener al menos 3
+            caracteres.</p>
+        <p *ngIf="nombreRef.errors?.['maxlength']">No puede superar los 20
+            caracteres.</p>
+    </div>
+    <button *ngIf="!estadoModificar"
+        type="button"
+        class="btn btn-warning rounded w-25 ms-3"
+        (click)="modificarNombre()">
+        Actualizar
+    </button>
+    <h5 class="ms-3 mt-2">Correo electrónico</h5>
+    <input class="ms-3 mb-3"
+        type="email"
+        [value]="email"
+        disabled>
+    <p
+        [ngClass]="mensajeNombreError ? 'container text-danger p-2 mt-3 text-center' 
+                                    : 'container text-success p-2 mt-3 text-center'"
+        *ngIf="mensajeNombre">
+        {{ mensajeNombre }}
+    </p>
+</div>
+<div *ngIf="habilitado"
+    class="container border border-3 border-success my-4 bg-light p-3">
+    <app-cambiar-password [email]="email"></app-cambiar-password>
+</div>

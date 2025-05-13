@@ -1,0 +1,56 @@
+h4 {
+    color: rgb(23, 33, 120);
+    border-bottom: 3px solid rgb(255, 157, 122);
+}
+
+#imgTitulo {
+    width: 5rem;
+    position: absolute;
+    right: 1rem;
+    top: 0.2rem;
+}
+
+#imagenEpisodio {
+    width: 14rem;
+    height: 8rem;
+}
+
+#tituloEpisodio {
+    color: #212529;
+    font-size: 1.1rem;
+    width: 12rem;
+}
+
+ul {
+    margin-left: 1.5rem;
+}
+
+li {
+    width: 16.1rem;
+}
+
+#tituloEpisodio:hover {
+    text-decoration-line: underline;
+    text-decoration-color: rgb(23, 33, 120);
+}
+
+#tituloEpisodio:active {
+    text-decoration-line: underline;
+    text-decoration-color: rgb(23, 33, 120);
+    color: rgb(23, 33, 120);
+    font-weight: 500;
+}
+
+@media (max-width: 400px) {
+    #imgTitulo {
+        display: none;
+    }
+
+    #contenedor {
+        padding: 0;
+    }
+
+    ul {
+        margin-left: 0;
+    }
+}

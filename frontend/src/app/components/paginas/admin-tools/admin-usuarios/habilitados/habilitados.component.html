@@ -1,0 +1,79 @@
+ <p
+    [ngClass]="mensajeError ? 'container bg-light rounded text-danger p-2 text-center w-auto mt-4' 
+                            : 'container bg-light rounded text-success p-2 text-center w-auto mt-4'"
+    *ngIf="mensaje">
+    {{ mensaje }}
+</p>
+<div *ngIf="listadoHabilitados.length === 0"
+    class="alert alert-danger w-50 mt-4">
+    <span>No existen usuarios habilitados.</span>
+</div>
+<ul *ngFor="let usuario of listadoHabilitados; let i = index"
+    class="mb-3 me-3 list-unstyled mt-3">
+    <li id="contenedorLista"
+        class="border border-dark rounded bg-light px-3 py-2 mb-2">
+        <span class="fw-bold">
+            Id:&nbsp;&nbsp;{{ usuario.idUsuario }}&nbsp;&nbsp; --
+            &nbsp;&nbsp; Email:&nbsp;&nbsp;{{ usuario.email }}
+        </span>
+        <div id="contenedorIconos">
+            <i class="fa-solid fa-book-open text-info me-3"
+                title="Ver"
+                data-toggle="collapse"
+                [attr.data-target]="'#collapse' + i"></i>
+            <i class="fa-solid fa-eye-slash text-warning me-3"
+                title="Deshabilitar usuario"
+                (click)="cambiarEstadoHabilitado(usuario)"></i>
+            <i
+                class="fa-solid fa-person-arrow-up-from-line text-success"
+                title="Cambiar a rol ADMIN"
+                (click)="cambiarRol(usuario)"></i>
+        </div>
+    </li>
+    <div class="collapse" [id]="'collapse' + i">
+        <div class="card card-body">
+            <div class="d-flex flex-column">
+                <div class="estructura">
+                    <label for="idUsuario">Usuario ID</label>
+                    <input id="idUsuario"
+                        class="mt-2 inputFormulario"
+                        type="text"
+                        [value]="usuario.idUsuario"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="usuario.nombre"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="email">Correo electrónico</label>
+                    <input id="email"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="usuario.email"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="estado">Habilitado</label>
+                    <input id="estado"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="usuario.habilitado"
+                        disabled>
+                </div>
+                <div class="estructura">
+                    <label for="rol">Rol</label>
+                    <input id="rol"
+                        class="inputFormulario"
+                        type="text"
+                        [value]="usuario.rol.nombre"
+                        disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>

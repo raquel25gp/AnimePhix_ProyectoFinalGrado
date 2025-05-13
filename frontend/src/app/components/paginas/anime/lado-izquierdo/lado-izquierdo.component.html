@@ -1,0 +1,56 @@
+<div id="contenedor" class="container mt-4">
+    <img id="imagenAnime"
+        [src]="urlImagen"
+        alt="nombre">
+    <div class="my-4 d-flex justify-content-center align-items-center">
+        <h3 id="estado"
+            class="badge rounded-pill text-white mb-0 py-3"
+            [ngClass]="{
+                'bg-success': estado === 'En emisión',
+                'bg-warning': estado === 'Pausado',
+                'bg-danger': estado === 'Finalizado'
+            }">
+            {{estado}}
+        </h3>
+        <button *ngIf="estaLogueado"
+            type="button"
+            title="Agregar a favoritos"
+            (click)="agregarFavorito()">
+            <svg width="50" height="50" class="ms-2">
+                <circle
+                    cx="25"
+                    cy="25"
+                    r="22"
+                    fill="none"
+                    stroke="rgb(215, 28, 72)"
+                    stroke-width="2" />
+            </svg>
+            <i class="fa-solid"
+                [ngClass]="{
+                'fa-heart': flag === false,
+                'fa-circle-check': flag === true
+            }"></i>
+        </button>
+        <button *ngIf="!estaLogueado"
+            type="button"
+            title="Agregar a favoritos"
+            (click)="mostrarMensaje()">
+            <svg width="50" height="50" class="ms-2">
+                <circle
+                    cx="25"
+                    cy="25"
+                    r="22"
+                    fill="none"
+                    stroke="rgb(215, 28, 72)"
+                    stroke-width="2" />
+            </svg>
+            <i class="fa-solid fa-heart"></i>
+        </button>
+    </div>
+    <p
+        [ngClass]="mensajeError ? 'container text-danger p-2 mt-3 text-center' 
+                            : 'container text-success p-2 mt-3 text-center'"
+        *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+</div>

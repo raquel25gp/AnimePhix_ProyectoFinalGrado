@@ -1,0 +1,40 @@
+<div id="contenedor" class="container">
+    <div id="bloqueImagen">
+        <img id="imagenPerfil" 
+            class="mt-5"
+            [src]="datosUsuario?.urlImagen"
+            alt="imagen de perfil" />
+        <h4 class="mt-4">{{ datosUsuario?.nombre | uppercase}}</h4>
+        <div *ngIf="cuadroImagen" class="container">
+            <label for="avatar">Selecciona una imagen de perfil:</label>
+            <select id="avatar" class="my-3" [(ngModel)]="imagenSeleccionada">
+                <option *ngFor="let avatar of avatares" [value]="avatar.ruta">
+                    {{ avatar.nombre }}
+                </option>
+            </select>
+            <button type="button"
+                class="btn btn-primary rounded ms-3 mb-3"
+                (click)="guardarImagen()">
+                <i class="fa-solid fa-floppy-disk me-2"></i>
+                Guardar cambios
+            </button>
+            <p
+                [ngClass]="mensajeImagenError ? 'container text-danger p-2 mt-3 text-center' 
+                                              : 'container text-success p-2 mt-3 text-center'"
+                *ngIf="mensajeImagen">
+                {{ mensajeImagen }}
+            </p>
+        </div>
+    </div>
+    <app-datos-usuario id="datos"
+        class="mt-4"
+        [nombre]="datosUsuario?.nombre"
+        [email]="email"
+        [estadoModificar]="cuadroEdicion"
+        [habilitado]="cuadroPassword"></app-datos-usuario>
+    <app-botones id="botones"
+        (habilitarEdicion)="habilitarEdicionDatos($event)"
+        (mostrarCuadro)="habilitarCambioPassword($event)"
+        (abrirSelect)="habilitarCambioImagen($event)"
+        [email]="email"></app-botones>
+</div>

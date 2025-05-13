@@ -1,0 +1,83 @@
+<div id="contenedor" class="container p-4">
+    <h2 class="text-xl font-bold mb-4 text-center">Registro</h2>
+    <form #miFormulario="ngForm"
+        (submit)="registrar(); $event.preventDefault()"
+        class="d-flex flex-column">
+        <div class="estructura">
+            <label for="nombre">Usuario</label>
+            <input id="nombre"
+                type="text"
+                [(ngModel)]="nombre"
+                name="nombre"
+                required
+                minlength="3"
+                maxlength="20"
+                #nombreRef="ngModel">
+        </div>
+        <div *ngIf="nombreRef.invalid && nombreRef.touched" class="error">
+            <p *ngIf="nombreRef.errors?.['required']">El nombre es
+                obligatorio.</p>
+            <p *ngIf="nombreRef.errors?.['minlength']">Debe tener al menos 3
+                caracteres.</p>
+            <p *ngIf="nombreRef.errors?.['maxlength']">No puede superar los 20
+                caracteres.</p>
+        </div>
+        <div class="estructura">
+            <label for="email">Email</label>
+            <input id="email"
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                required
+                email
+                #emailRef="ngModel">
+        </div>
+        <div *ngIf="emailRef.invalid && emailRef.touched" class="error">
+            <p *ngIf="emailRef.errors?.['required']">El email es
+                obligatorio.</p>
+            <p *ngIf="emailRef.errors?.['email']">El formato no es válido.</p>
+        </div>
+        <div class="estructura">
+            <label for="password">Contraseña</label>
+            <input id="password"
+                type="password"
+                [(ngModel)]="password"
+                name="password"
+                required
+                pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,20}$'
+                #passwordRef="ngModel">
+        </div>
+        <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error">
+            <p *ngIf="passwordRef.errors?.['required']">La contraseña es
+                obligatoria.</p>
+            <p *ngIf="passwordRef.errors?.['pattern']">Debe contener al menos
+                una mayúscula, una minúscula, un número, sin espacios, mínimo 8
+                caracteres y máximo 20.</p>
+        </div>
+        <div class="estructura">
+            <label for="confirmarPassword">Confirmar contraseña</label>
+            <input id="confirmarPassword"
+                type="password"
+                [(ngModel)]="confirmarPassword"
+                name="confirmarPassword"
+                required>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <button type="submit"
+                class="py-2 rounded">
+                Registrarme
+            </button>
+            <button type="button"
+                (click)="iniciarSesion()"
+                class="py-2 rounded">
+                Iniciar sesión
+            </button>
+        </div>
+        <p
+            [ngClass]="mensajeError ? 'container bg-danger text-white p-2 border border-black rounded w-75 mt-3 text-center' 
+                                    : 'container text-success p-2 mt-3 text-center'"
+            *ngIf="mensaje">
+            {{ mensaje }}
+        </p>
+    </form>
+</div>

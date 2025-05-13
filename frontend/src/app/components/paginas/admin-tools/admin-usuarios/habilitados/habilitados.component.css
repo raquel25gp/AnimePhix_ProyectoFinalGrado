@@ -1,0 +1,71 @@
+i {
+    cursor: pointer;
+}
+
+#contenedorLista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contenedorIconos {
+    display: flex;
+    gap: 8px;
+}
+
+.estructura {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+label {
+    width: 15vw;
+    text-align: left;
+}
+
+.inputFormulario {
+    width: 20rem;
+}
+
+.error {
+    margin-left: 12rem;
+    color: rgb(183, 37, 37);
+}
+
+@media (max-width: 630px) {
+    #contenedorLista {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+        max-width: 70vw;
+    }
+
+    span {
+        width: 50vw;
+        overflow-wrap: break-word;
+    }
+
+    .estructura {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0;
+    }
+
+    label {
+        width: 60vw;
+        text-align: left;
+    }
+
+    .inputFormulario {
+        margin-left: 0;
+        width: 50vw;
+    }
+
+    .error {
+        margin-left: 0;
+    }
+}

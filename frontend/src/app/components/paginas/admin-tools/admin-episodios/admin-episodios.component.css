@@ -1,0 +1,68 @@
+.scrollable-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+i {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.estructura {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+label {
+  width: 10rem;
+  text-align: left;
+}
+
+.inputFormulario {
+  width: 17rem;
+}
+
+textarea {
+  width: 60rem;
+}
+
+#botonActualizar {
+  background-color: rgb(23, 33, 120);
+  border-color: rgb(23, 33, 120);
+  color: white;
+}
+
+#botonActualizar:hover,
+#botonActualizar:active {
+  background-color: rgb(255, 157, 122);
+  color: rgb(23, 33, 120);
+  font-weight: 630;
+}
+
+.inputFormulario,
+textarea,
+select,
+option #botonActualizar {
+  margin: 1rem;
+  padding: 0.3rem;
+}
+
+.error {
+  margin-left: 12rem;
+  color: rgb(183, 37, 37);
+}

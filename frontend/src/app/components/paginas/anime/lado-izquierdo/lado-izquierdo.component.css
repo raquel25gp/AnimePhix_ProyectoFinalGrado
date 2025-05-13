@@ -1,0 +1,46 @@
+#contenedor {
+    text-align: center;
+}
+
+#imagenAnime {
+    width: 13rem;
+}
+
+#estado {
+    color: #212529;
+    font-size: 1.2rem;
+    width: 9.5rem;
+}
+
+button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+}
+
+.fa-heart {
+    position: absolute;
+    font-size: 20px;
+    color: rgb(215, 28, 72);
+    top: 53%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+}
+
+.fa-circle-check {
+    position: absolute;
+    font-size: 20px;
+    color: darkviolet;
+    top: 51%;
+    left: 67%;
+    transform: translate(-50%, -50%);
+}

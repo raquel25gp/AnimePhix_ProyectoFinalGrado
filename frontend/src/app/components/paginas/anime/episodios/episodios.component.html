@@ -1,0 +1,12 @@
+<div class="container border border-dark mb-5 bg-light">
+    <h5 class="mt-2 border-bottom border-dark mb-3">Listado de episodios</h5>
+    <ul class="list-unstyled ps-3">
+        <li *ngFor="let episodio of listado" class="mb-3">
+            <i class="fa-brands fa-youtube text-primary me-2"></i>
+            <a [routerLink]="['/anime', episodio.anime,'episodio', episodio.numEpisodio]">
+                {{episodio.anime}} Nº{{episodio.numEpisodio}}
+            </a>
+        </li>
+    </ul>
+</div>
+

@@ -1,0 +1,112 @@
+<div id="contenedor" class="container my-5 bg-light rounded p-3">
+    <h2 class="text-center">Subir episodio</h2>
+    <form #miFormulario="ngForm"
+        (submit)="crear()"
+        class="d-flex flex-column">
+        <div class="estructura mt-3">
+            <label for="nombreAnime">Anime</label>
+            <select id="nombreAnime"
+                class="border-dark p-2 rounded inputFormulario"
+                [(ngModel)]="nombreAnime"
+                name="nombreAnime"
+                required
+                #animeRef="ngModel">
+                <option *ngFor="let anime of listadoAnime"
+                    [value]="anime">
+                    {{ anime }}
+                </option>
+            </select>
+        </div>
+        <div *ngIf="animeRef.invalid && animeRef.touched"
+            class="error">
+            <p *ngIf="animeRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="fechaLanzamiento">Fecha de lanzamiento</label>
+            <input id="fechaLanzamiento"
+                class="inputFormulario"
+                type="date"
+                [(ngModel)]="fechaLanzamiento"
+                name="fechaLanzamiento"
+                required
+                #fechaRef="ngModel">
+        </div>
+        <div *ngIf="fechaRef.invalid && fechaRef.touched"
+            class="error">
+            <p *ngIf="fechaRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="urlVideo">Dirección URL del video</label>
+            <input id="urlVideo"
+                class="inputFormulario"
+                type="text"
+                [(ngModel)]="urlVideo"
+                name="urlVideo"
+                minlength="3"
+                maxlength="500"
+                required
+                #urlVideoRef="ngModel">
+        </div>
+        <div *ngIf="urlVideoRef.invalid && urlVideoRef.touched"
+            class="error">
+            <p *ngIf="urlVideoRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+            <p *ngIf="urlVideoRef.errors?.['minlength']">
+                Debe tener al menos 3 caracteres.
+            </p>
+            <p *ngIf="urlVideoRef.errors?.['maxlength']">
+                No puede superar los 500 caracteres.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="urlPoster">Dirección URL de la imagen del video</label>
+            <input id="urlPoster"
+                class="inputFormulario"
+                type="text"
+                [(ngModel)]="urlPoster"
+                name="urlPoster"
+                minlength="3"
+                maxlength="500"
+                #urlPosterRef="ngModel">
+        </div>
+        <div *ngIf="urlPosterRef.invalid && urlPosterRef.touched"
+            class="error">
+            <p *ngIf="urlPosterRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+            <p *ngIf="urlPosterRef.errors?.['minlength']">
+                Debe tener al menos 3 caracteres.
+            </p>
+            <p *ngIf="urlPosterRef.errors?.['maxlength']">
+                No puede superar los 500 caracteres.
+            </p>
+        </div>
+        <div
+            class="d-flex align-items-center justify-content-center">
+            <button id="botonCrear"
+                type="submit"
+                class="py-2 rounded">
+                Cargar
+            </button>
+            <button
+                type="button"
+                class="py-2 rounded btn btn-primary text-white ms-5 fw-bold"
+                routerLink="/admin-tools"
+                routerLinkActive="active">
+                <i class="fa-solid fa-circle-arrow-left me-2"></i>
+                Volver
+            </button>
+        </div>
+    </form>
+    <p
+        [ngClass]="mensajeError ? 'container bg-danger rounded text-white p-2 text-center mt-3' 
+                                : 'container bg-success rounded text-white p-2 text-center mt-3'"
+        *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+</div>

@@ -1,0 +1,62 @@
+#tituloPagina {
+    color: rgb(23, 33, 120);
+    border-bottom: 3px solid rgb(255, 157, 122);
+}
+
+#imagenTitulo {
+    width: 4rem;
+}
+
+#imagenAnime {
+    width: 12rem;
+}
+
+#tituloAnime {
+    color: #212529;
+    font-size: 1.3rem;
+    width: 12rem;
+}
+
+li {
+    margin-right: 5rem;
+}
+
+#tituloAnime:hover {
+    color: rgb(23, 33, 120);
+}
+
+#paginacion {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#paginacion button {
+    padding: 8px 12px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#paginacion button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#textoNoEncontrado {
+    max-width: 25vw;
+}
+
+@media (min-width: 721px) and (max-width: 1200px) {
+    #textoNoEncontrado {
+        max-width: 40vw;
+    }
+}
+
+@media (max-width: 720px) {
+    #textoNoEncontrado {
+        max-width: 60vw;
+    }
+}

@@ -1,0 +1,71 @@
+<div class="scrollable-content">
+    <form class="d-flex justify-content-start mt-4">
+        <input
+            class="form-control w-25 me-2"
+            type="search"
+            [(ngModel)]="animeBuscado"
+            (keydown.enter)="buscarAnime()"
+            name="animeBuscado"
+            placeholder="Buscar..."
+            aria-label="Search" />
+        <button class="btn btn-success"
+            type="button"
+            (click)="buscarAnime()"
+            title="Buscar">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="btn btn-info text-white ms-3"
+            type="button"
+            (click)="refrescar()"
+            title="Refrescar contenido">
+            <i class="fas fa-arrows-rotate"></i>
+        </button>
+        <button class="btn btn-warning text-white ms-3 me-5"
+            type="button"
+            title="Subir episodios"
+            (click)="navegarASubirEpisodio()">
+            <i class="fa-solid fa-upload"></i>
+        </button>
+        <p
+            [ngClass]="mensajeError ? 'bg-light rounded text-danger p-2 text-center w-auto' 
+                                    : 'bg-light rounded text-success p-2 text-center w-auto'"
+            *ngIf="mensaje">
+            {{ mensaje }}
+        </p>
+    </form>
+    <div class="scrollable-list mt-4">
+        <div *ngIf="listadoAnimes.length === 0"
+            class="alert alert-danger w-50 mt-4">
+            <span>No se ha encontrado ningún anime.</span>
+        </div>
+        <ul *ngFor="let anime of listadoAnimes; let i = index"
+            class="mb-3 me-3 list-unstyled">
+            <li
+                class="d-flex justify-content-between align-items-center border border-dark rounded bg-light px-3 py-2 mb-2 w-100">
+                <a [routerLink]="['/anime', anime.nombre]"
+                    class="fw-bold text-dark">
+                    {{ anime.nombre }}
+                </a>
+                <div class="d-flex gap-2">
+                    <i class="fa-solid fa-pen text-success me-3"
+                        title="Editar"
+                        data-toggle="collapse"
+                        [attr.data-target]="'#collapse' + i"></i>
+                </div>
+            </li>
+            <div class="collapse" [id]="'collapse' + i">
+                <div class="card card-body">
+                    <h5 class="mt-2 border-bottom border-dark mb-3">Listado de
+                        episodios</h5>
+                    <app-listar-episodios
+                        [listado]="cargarEpisodios(anime.idAnime)"
+                        [padreIndex]="i"
+                        (notificarMensaje)="recibirMensaje($event)"
+                        (notificarEstadoMensaje)="recibirEstadoMensaje($event)">
+                    </app-listar-episodios>
+
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

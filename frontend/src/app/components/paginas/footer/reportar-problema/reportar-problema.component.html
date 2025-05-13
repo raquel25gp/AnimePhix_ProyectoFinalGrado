@@ -1,0 +1,65 @@
+<div id="contenedor" class="container p-4">
+    <h2 class="text-xl font-bold mb-4 text-danger">Reportar un problema</h2>
+    <form (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+        <label for="email">Introduce tu email</label>
+        <input type="email"
+            [(ngModel)]="email"
+            name="email"
+            email
+            required
+            class="border-dark p-2 rounded"
+            #emailRef="ngModel">
+        <div *ngIf="emailRef.invalid && emailRef.touched"
+            class="error">
+            <p *ngIf="emailRef.errors?.['required']">
+                Es obligatorio introducir un email.
+            </p>
+            <p *ngIf="emailRef.errors?.['email']">
+                Formato del email incorrecto.
+            </p>
+        </div>
+        <label id="tipo">&nbsp;Seleccione dónde se encuentra el error:</label>
+        <select for="tipo"
+            [(ngModel)]="categoria"
+            name="category"
+            required
+            class="border-dark p-2 rounded"
+            #tipoProblemaRed="ngModel">
+            <option *ngFor="let tipo of listadoNombreTipos"
+                [value]="tipo.nombre">
+                {{tipo.nombre}}
+            </option>
+        </select>
+        <div *ngIf="tipoProblemaRed.invalid && tipoProblemaRed.touched"
+            class="error">
+            <p *ngIf="tipoProblemaRed.errors?.['required']">Es obligatorio
+                indicar el tipo de problema.</p>
+        </div>
+        <textarea [(ngModel)]="descripcion"
+            name="descripcion"
+            placeholder="Describe el problema..."
+            rows="4"
+            required
+            class="border-dark p-2 rounded"
+            #descripcionRed="ngModel"></textarea>
+        <div *ngIf="descripcionRed.invalid && descripcionRed.touched"
+            class="error">
+            <p *ngIf="descripcionRed.errors?.['required']">
+                Tienes que dar una breve descripción del error.
+            </p>
+        </div>
+        <button type="submit"
+            class="text-white py-2 rounded">
+            Enviar reporte
+        </button>
+
+        <p class="text-center">Para problemas urgentes, envianos un correo
+            electrónico a {{ emailContacto }}</p>
+    </form>
+    <p
+        [ngClass]="mensajeError ? 'text-danger p-2 mt-3 text-center' 
+                                : 'text-success p-2 mt-3 text-center'"
+        *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+</div>

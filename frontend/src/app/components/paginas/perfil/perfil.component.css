@@ -1,0 +1,118 @@
+#contenedor {
+    display: grid;
+    grid-template-areas: "bloqueImagen datos botones";
+    grid-template-columns: 25% 1fr 30%;
+}
+
+#bloqueImagen {
+    grid-area: bloqueImagen;
+    text-align: center;
+}
+
+#datos {
+    grid-area: datos;
+}
+
+#botones {
+    grid-area: botones;
+}
+
+#imagenPerfil {
+    width: 13rem;
+    border-radius: 60%;
+}
+
+h4 {
+    color: rgb(23, 33, 120);
+}
+
+@media (min-width: 761px) and (max-width: 1200px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "bloqueImagen datos"
+                            ". botones";
+        grid-template-columns: 30% 1fr;
+        grid-template-rows: 1fr 35%;
+    }
+    
+    #bloqueImagen {
+        grid-area: bloqueImagen;
+        text-align: center;
+    }
+    
+    #datos {
+        grid-area: datos;
+        width: 50vw;
+    }
+    
+    #botones {
+        grid-area: botones;
+        margin-bottom: 2rem;
+    }
+
+    #imagenPerfil {
+        width: 15vw;
+    }
+}
+
+@media (min-width: 451px) and (max-width: 760px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "bloqueImagen"
+                            "datos"
+                            "botones";
+        grid-template-columns: 1fr;
+        grid-template-rows: 25% 50% 25%;
+        align-items: center;
+    }
+    
+    #bloqueImagen {
+        grid-area: bloqueImagen;
+        text-align: center;
+        padding: 0;
+    }
+    
+    #datos {
+        grid-area: datos;
+        margin-bottom: 2rem;
+    }
+    
+    #botones {
+        grid-area: botones;
+    }
+
+    #imagenPerfil {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 450px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "bloqueImagen"
+                            "datos"
+                            "botones";
+        grid-template-columns: 1fr;
+        grid-template-rows: 25% 50% 25%;
+        align-items: center;
+    }
+    
+    #bloqueImagen {
+        grid-area: bloqueImagen;
+        text-align: center;
+        padding: 0;
+    }
+    
+    #datos {
+        grid-area: datos;
+        margin-bottom: 2rem;
+    }
+    
+    #botones {
+        grid-area: botones;
+    }
+
+    #imagenPerfil {
+        width: 30vw;
+    }
+}

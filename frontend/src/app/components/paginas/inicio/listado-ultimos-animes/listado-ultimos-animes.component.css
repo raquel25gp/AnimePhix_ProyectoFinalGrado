@@ -1,0 +1,21 @@
+h4 {
+    color: rgb(23, 33, 120);
+    border-bottom: 3px solid rgb(255, 157, 122);
+}
+
+a {
+    text-decoration: none;
+    color: #212529;
+}
+
+a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: rgb(23, 33, 120);
+}
+
+a:active {
+    text-decoration-line: underline;
+    text-decoration-color: rgb(23, 33, 120);
+    color: rgb(23, 33, 120);
+    font-weight: 500;
+}

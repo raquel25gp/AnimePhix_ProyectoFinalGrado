@@ -1,0 +1,109 @@
+#contenedor {
+    display: grid;
+    grid-template-areas: "lateral1 descripcion publicidad"
+        "lateral1 episodios publicidad";
+    grid-template-columns: 20% 1fr 25%;
+    grid-template-rows: 1fr;
+    gap: 20px;
+}
+
+#lateral1 {
+    grid-area: lateral1;
+}
+
+#publicidad {
+    grid-area: publicidad;
+}
+
+#descripcion {
+    grid-area: descripcion;
+}
+
+#episodios {
+    grid-area: episodios;
+}
+
+@media (min-width: 995px) and (max-width: 1200px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "lateral1 descripcion"
+            "publicidad episodios";
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+    }
+
+    #lateral1 {
+        grid-area: lateral1;
+    }
+
+    #publicidad {
+        grid-area: publicidad;
+    }
+
+    #descripcion {
+        grid-area: descripcion;
+    }
+
+    #episodios {
+        grid-area: episodios;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 994px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "lateral1 publicidad"
+            "descripcion descripcion"
+            "episodios episodios";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+    }
+
+    #lateral1 {
+        grid-area: lateral1;
+    }
+
+    #publicidad {
+        grid-area: publicidad;
+    }
+
+    #descripcion {
+        grid-area: descripcion;
+    }
+
+    #episodios {
+        grid-area: episodios;
+    }
+}
+
+@media (max-width: 550px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "lateral1"
+            "publicidad"
+            "descripcion"
+            "episodios";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 20px;
+        max-width: 90vw;
+    }
+
+    #lateral1 {
+        grid-area: lateral1;
+    }
+
+    #publicidad {
+        grid-area: publicidad;
+    }
+
+    #descripcion {
+        grid-area: descripcion;
+    }
+
+    #episodios {
+        grid-area: episodios;
+    }
+}

@@ -1,0 +1,37 @@
+#contenedor {
+    max-width: 80vw;
+}
+
+.scrollable-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.scrollable-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+a {
+    color: black;
+    font-size: 1rem;
+}
+
+a:hover {
+    background-color: lightgrey;
+    color: black;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab-content {
+    height: 100%;
+    overflow: hidden;
+}

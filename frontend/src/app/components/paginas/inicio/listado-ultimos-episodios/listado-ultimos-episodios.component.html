@@ -1,0 +1,22 @@
+<div class="border rounded-4 bg-light ms-4 mt-3">
+    <h4 class="p-2 ps-4 position-relative">Últimos episodios
+        <img id="imgTitulo" src="ultimosEp.png" alt="Episodios de hoy">
+    </h4>
+    <div id="contenedor" class="container mt-5">
+        <ul class="list-unstyled ps-3 d-flex flex-wrap justify-content-center">
+            <li *ngFor="let episodio of listadoEpisodios" class="mb-4">
+                <a class="text-decoration-none"
+                    [routerLink]="['/anime', episodio.anime,'episodio', episodio.numEpisodio]">
+                    <img id="imagenEpisodio"
+                        class="rounded mb-1"
+                        [src]="episodio.urlPoster"
+                        alt="episodio.anime">
+                    <h3 id="tituloEpisodio"
+                        class="mt-2 text-center">
+                        {{episodio.anime}} Nº{{episodio.numEpisodio}}
+                    </h3>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

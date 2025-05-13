@@ -1,0 +1,64 @@
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 80%;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+}
+
+.distancia {
+    margin-top: 4rem;
+}
+
+@media (min-width: 921px) and (max-width: 1000px) {
+    div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        width: 50vw;
+        gap: 10px;
+        justify-content: center;
+    }
+    button {
+        width: 30vw;
+        margin-left: 1rem;
+        height: 12%;
+    }
+
+    .distancia {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+    div {
+        width: 50vw;
+        align-items: center;
+    }
+    button {
+        width: 30vw;
+        margin-left: 0;
+    }
+    .distancia {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    div {
+        width: 50vw;
+        align-items: center;
+    }
+    button {
+        width: 55vw;
+        margin-left: 0;
+    }
+    .distancia {
+        margin-top: 0;
+    }
+}

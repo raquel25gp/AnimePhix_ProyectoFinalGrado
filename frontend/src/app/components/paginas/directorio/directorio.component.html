@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h3 id="tituloPagina">
+        <img id="imagenTitulo"
+            class="mx-3 my-1"
+            src="img_footer.png"
+            alt="Cara de Luffy - One Piece">
+        Listado completo de Animes
+    </h3>
+    <app-filtro (aplicarFiltros)="aplicarFiltros($event)"></app-filtro>
+
+    <div id="textoNoEncontrado" *ngIf="listadoAnimes.length === 0"
+        class="alert alert-danger mt-5 ms-3">
+        <span>No se ha encontrado ningún anime.</span>
+    </div>
+
+    <ul
+        class="mt-5 ms-5 list-unstyled ps-5 d-flex flex-wrap justify-content-center">
+        <li *ngFor="let anime of animesPaginados" class="mb-3">
+            <a [routerLink]="['/anime', anime.nombre]"
+                class="text-decoration-none">
+                <img id="imagenAnime"
+                    [src]="anime.urlImagen"
+                    alt="anime.nombre">
+                <h3 id="tituloAnime"
+                    class="mt-2 text-center text-break overflow-hidden">
+                    {{anime.nombre}}
+                </h3>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Controles de paginación -->
+    <div *ngIf="listadoAnimes.length !== 0"
+        class="d-flex justify-content-center mb-4" id="paginacion">
+        <button class="btn btn-dark me-2"
+            (click)="cambiarPagina(-1)"
+            [disabled]="desplazamiento === 0">
+            Anterior
+        </button>
+        <button class="btn btn-dark"
+            (click)="cambiarPagina(1)"
+            [disabled]="desplazamiento + limite >= totalAnimes">
+            Siguiente
+        </button>
+    </div>
+</div>

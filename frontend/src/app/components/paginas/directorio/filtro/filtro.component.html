@@ -1,0 +1,32 @@
+<div class="container d-flex flex-wrap gap-2 align-items-center my-3">
+
+    <div *ngIf="generos.length">
+        <select class="form-select" [(ngModel)]="generoSeleccionado">
+            <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+        </select>
+    </div>
+
+    <div *ngIf="anios.length">
+        <select class="form-select" [(ngModel)]="anioSeleccionado">
+            <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+        </select>
+    </div>
+
+    <div *ngIf="estados.length">
+        <select class="form-select" [(ngModel)]="estadoSeleccionado">
+            <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+        </select>
+    </div>
+
+    <div>
+        <select class="form-select" [(ngModel)]="ordenSeleccionado">
+            <option *ngFor="let orden of ordenes" [value]="orden">{{ orden }}</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" (click)="filtrar()">
+        <i class="fa-solid fa-filter me-1"></i> Filtrar
+    </button>
+
+</div>
+

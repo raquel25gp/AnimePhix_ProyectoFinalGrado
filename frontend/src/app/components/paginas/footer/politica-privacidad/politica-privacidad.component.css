@@ -1,0 +1,18 @@
+div {
+    margin-bottom: 2.5rem;
+    text-align: justify;
+}
+h3 {
+    color: rgb(23, 33, 120);
+    border-bottom: 3px solid rgb(255, 157, 122);
+}
+h4 {
+    color: rgb(23, 33, 120);
+}
+p{
+    padding: 0.25rem 1rem;
+    margin-bottom: 0;
+}
+img {
+    width: 4rem;
+}

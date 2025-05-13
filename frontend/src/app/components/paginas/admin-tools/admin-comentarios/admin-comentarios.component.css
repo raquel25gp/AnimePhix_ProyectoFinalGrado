@@ -1,0 +1,144 @@
+.scrollable-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.scrollable-list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#contenedorLista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contenedorIconos {
+    display: flex;
+    gap: 8px;
+}
+
+i {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.estructura {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    width: 10vw;
+    text-align: left;
+}
+
+.inputFormulario {
+    width: 15vw;
+}
+
+textarea {
+    width: 45vw;
+}
+
+.inputFormulario,
+textarea{
+    margin: 1rem;
+    padding: 0.3rem;
+}
+
+.error {
+    margin-left: 12rem;
+    color: rgb(183, 37, 37);
+}
+
+@media (min-width: 791px) and (max-width: 1200px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+
+  label {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    width: 30vw;
+  }
+
+  textarea {
+    width: 60vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 571px) and (max-width: 790px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+
+  label {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    width: 50vw;
+  }
+
+  textarea {
+    width: 60vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 570px) {
+  .estructura {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+
+  label {
+    width: 60vw;
+    text-align: left;
+  }
+
+  .inputFormulario {
+    margin-left: 0;
+    width: 55vw;
+  }
+
+  textarea {
+    margin-left: 0;
+    width: 55vw;
+  }
+
+  .error {
+    margin-left: 0;
+  }
+}

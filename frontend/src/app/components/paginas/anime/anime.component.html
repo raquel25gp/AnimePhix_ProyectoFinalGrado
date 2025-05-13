@@ -1,0 +1,14 @@
+<div id="contenedor" class="container">
+    <app-lado-izquierdo id="lateral1"
+        [nombre]="nombreAnime"
+        [urlImagen]="datosAnime?.urlImagen"
+        [estado]="datosAnime?.estado"></app-lado-izquierdo>
+    <app-publicidad id="publicidad"></app-publicidad>
+    <app-detalle id="descripcion"
+        [nombre]="nombreAnime"
+        [descripcion]="datosAnime?.descripcion"
+        [genero]="datosAnime?.genero"></app-detalle>
+    <app-episodios id="episodios"
+        [listado]="datosAnime?.listadoEpisodios">
+    </app-episodios>
+</div>

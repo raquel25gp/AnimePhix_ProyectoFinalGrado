@@ -1,0 +1,73 @@
+<div class="container container-fluid h-100 w-75 d-flex flex-column">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#animes"
+                role="tab">
+                Animes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+                data-toggle="tab"
+                href="#episodios"
+                role="tab">
+                Episodios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+                data-toggle="tab"
+                href="#usuarios"
+                role="tab">
+                Usuarios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+                data-toggle="tab"
+                href="#comentarios"
+                role="tab">
+                Comentarios ocultos
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+                data-toggle="tab"
+                href="#reportes"
+                role="tab">
+                Reportes
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content flex-grow-1 mb-4">
+        <div class="tab-pane fade show active h-100"
+            id="animes"
+            role="tabpanel">
+            <app-admin-animes></app-admin-animes>
+        </div>
+        <div class="tab-pane fade h-100"
+            id="episodios"
+            role="tabpanel">
+            <app-admin-episodios></app-admin-episodios>
+        </div>
+        <div class="tab-pane fade h-100"
+            id="usuarios"
+            role="tabpanel">
+            <app-admin-usuarios></app-admin-usuarios>
+        </div>
+        <div class="tab-pane fade h-100"
+            id="comentarios"
+            role="tabpanel">
+            <app-admin-comentarios></app-admin-comentarios>
+        </div>
+        <div class="tab-pane fade h-100"
+            id="reportes"
+            role="tabpanel">
+            <app-admin-reportes></app-admin-reportes>
+        </div>
+    </div>
+</div>

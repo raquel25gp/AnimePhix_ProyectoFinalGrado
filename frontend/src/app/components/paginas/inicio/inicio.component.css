@@ -1,0 +1,50 @@
+#contenedor {
+    display: grid;
+    grid-template-areas: "animes episodios";
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: auto;
+}
+
+#animes {
+    grid-area: animes;
+}
+
+#episodios {
+    grid-area: episodios;
+}
+
+@media (min-width: 501px) and (max-width: 1200px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "nada1 animes nada2"
+                                "nada1 episodios nada2";
+        grid-template-columns: 10% 1fr 10%;
+        grid-template-rows: auto;
+    }
+    
+    #animes {
+        grid-area: animes;
+    }
+    
+    #episodios {
+        grid-area: episodios;
+    }
+}
+
+@media (max-width: 500px) {
+    #contenedor {
+        display: grid;
+        grid-template-areas: "animes"
+                                "episodios";
+        grid-template-columns: 90%;
+        grid-template-rows: auto;
+    }
+    
+    #animes {
+        grid-area: animes;
+    }
+    
+    #episodios {
+        grid-area: episodios;
+    }
+}

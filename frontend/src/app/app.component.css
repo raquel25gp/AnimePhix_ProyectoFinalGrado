@@ -1,0 +1,14 @@
+* {
+    background-image: url('../../public/fondo.png');
+    background-repeat: repeat-x;
+}
+
+#contenedor {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* asegura que el contenedor tenga al menos el alto de la pantalla */
+}
+
+#contenido {
+  flex: 1; /* ocupa todo el espacio disponible entre header y footer */
+}

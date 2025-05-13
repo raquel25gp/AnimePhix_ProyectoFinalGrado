@@ -1,0 +1,198 @@
+<div class="scrollable-content">
+    <form class="d-flex justify-content-start mt-4">
+        <input
+            class="form-control w-25 me-2"
+            type="search"
+            [(ngModel)]="animeBuscado"
+            (keydown.enter)="buscarAnime()"
+            name="animeBuscado"
+            placeholder="Buscar..."
+            aria-label="Search" />
+        <button class="btn btn-success"
+            type="button" (click)="buscarAnime()"
+            title="Buscar">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="btn btn-info text-white ms-3"
+            type="button" (click)="refrescar()"
+            title="Refrescar contenido">
+            <i class="fas fa-arrows-rotate"></i>
+        </button>
+        <button class="btn btn-warning text-white ms-3 me-5"
+            type="button"
+            title="Agregar anime"
+            (click)="navegarACrearAnime()">
+            <i class="fa-solid fa-circle-plus"></i>
+        </button>
+        <p
+            [ngClass]="mensajeError ? 'bg-light rounded text-danger p-2 text-center w-auto m-0' 
+                                    : 'bg-light rounded text-success p-2 text-center w-auto m-0'"
+            *ngIf="mensaje">
+            {{ mensaje }}
+        </p>
+    </form>
+    <div class="scrollable-list mt-4">
+        <div *ngIf="listadoAnimes.length === 0"
+            class="alert alert-danger w-50 mt-4">
+            <span>No se ha encontrado ningún anime.</span>
+        </div>
+        <ul *ngFor="let anime of listadoAnimes; let i = index"
+            class="mb-3 me-3 list-unstyled">
+            <li
+                class="d-flex justify-content-between align-items-center border border-dark rounded bg-light px-3 py-2 mb-2 w-100">
+                <a [routerLink]="['/anime', anime.nombre]"
+                    class="fw-bold text-dark">
+                    {{ anime.nombre }}
+                </a>
+                <div class="d-flex gap-2">
+                    <i class="fa-solid fa-pen text-success me-3"
+                        title="Editar"
+                        data-toggle="collapse"
+                        [attr.data-target]="'#collapse' + i"></i>
+                    <i class="fa-solid fa-eye-low-vision me-3"
+                        title="Ocultar / Mostrar"
+                        (click)="cambiarEstadoVisbleAnime(anime.idAnime)"></i>
+                    <i class="fa-solid fa-trash-can text-danger"
+                        title="Eliminar"
+                        (click)="eliminarAnime(anime.idAnime)"></i>
+                </div>
+            </li>
+            <div class="collapse" [id]="'collapse' + i">
+                <div class="card card-body">
+                    <form #miFormulario="ngForm"
+                        (submit)="actualizar(anime); $event.preventDefault()"
+                        class="d-flex flex-column">
+                        <div class="estructura">
+                            <label for="visibilidad">Visibilidad</label>
+                            <input id="visibilidad"
+                                class="inputFormulario"
+                                type="text"
+                                [value]="anime.visible"
+                                disabled>
+                        </div>
+                        <div class="estructura">
+                            <label for="nombre">Anime</label>
+                            <input id="nombre"
+                                class="inputFormulario"
+                                type="text"
+                                [(ngModel)]="anime.nombre"
+                                name="nombre"
+                                minlength="3"
+                                maxlength="60"
+                                #nombreRef="ngModel">
+                        </div>
+                        <div *ngIf="nombreRef.invalid && nombreRef.touched"
+                            class="error">
+                            <p *ngIf="nombreRef.errors?.['minlength']">
+                                Debe tener al menos 3 caracteres.
+                            </p>
+                            <p *ngIf="nombreRef.errors?.['maxlength']">
+                                No puede superar los 60 caracteres.
+                            </p>
+                        </div>
+                        <div class="estructura">
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion"
+                                class="form-control border-dark"
+                                [(ngModel)]="anime.descripcion"
+                                name="descripcion"
+                                rows="6"
+                                minlength="3"
+                                maxlength="5000"
+                                #descripcionRef="ngModel">
+                            </textarea>
+                        </div>
+                        <div
+                            *ngIf="descripcionRef.invalid && descripcionRef.touched"
+                            class="error">
+                            <p *ngIf="descripcionRef.errors?.['minlength']">
+                                Debe tener al menos 3 caracteres.
+                            </p>
+                            <p *ngIf="descripcionRef.errors?.['maxlength']">
+                                No puede superar los 5000 caracteres.
+                            </p>
+                        </div>
+                        <div class="estructura">
+                            <label for="fechaInicio">Fecha de inicio</label>
+                            <input id="fechaInicio"
+                                class="inputFormulario"
+                                type="text"
+                                [value]="anime.fechaInicio | date: 'dd/MM/yyyy'"
+                                disabled>
+                        </div>
+                        <div id="contenedorFechas" class="estructura">
+                            <label for="fechaFinTexto">Fecha de finalización
+                                actual</label>
+                            <input id="fechaFinTexto" class="inputFormulario"
+                                type="text"
+                                [value]="anime.fechaFin | date: 'dd/MM/yyyy'"
+                                disabled>
+                            <label for="fechaFin">Nueva fecha de
+                                finalización</label>
+                            <input id="fechaFin"
+                                class="inputFormulario"
+                                type="date"
+                                [(ngModel)]="anime.fechaFin"
+                                name="fechaFin">
+                        </div>
+                        <div class="estructura">
+                            <label for="diaSemana">
+                                Día de la semana (0 - Lunes a 6 - Domingo)
+                            </label>
+                            <input id="diaSemana"
+                                class="inputFormulario"
+                                type="number"
+                                [(ngModel)]="anime.diaSemana"
+                                name="diaSemana"
+                                min=0
+                                max=6
+                                #diaSemanaRef="ngModel">
+                        </div>
+                        <div
+                            *ngIf="diaSemanaRef.invalid && diaSemanaRef.touched"
+                            class="error">
+                            <p *ngIf="diaSemanaRef.errors?.['min']">
+                                El valor minimo es 0, representando al lunes.
+                            </p>
+                            <p *ngIf="diaSemanaRef.errors?.['max']">
+                                El valor máximo es 6, representando al domingo.
+                            </p>
+                        </div>
+                        <div class="estructura">
+                            <label for="genero">Género</label>
+                            <select id="genero"
+                                class="border-dark p-2 rounded inputFormulario"
+                                [(ngModel)]="anime.genero.nombre"
+                                name="genero">
+                                <option *ngFor="let genero of listadoGenero"
+                                    [value]="genero">
+                                    {{ genero }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="estructura">
+                            <label for="estado">Estado</label>
+                            <select id="estado"
+                                class="border-dark p-2 rounded inputFormulario"
+                                [(ngModel)]="anime.estado.nombre"
+                                name="estado">
+                                <option *ngFor="let estado of listadoEstado"
+                                    [value]="estado">
+                                    {{ estado }}
+                                </option>
+                            </select>
+                        </div>
+                        <div
+                            class="d-flex align-items-center justify-content-center">
+                            <button id="botonActualizar"
+                                type="submit"
+                                class="py-2 rounded">
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

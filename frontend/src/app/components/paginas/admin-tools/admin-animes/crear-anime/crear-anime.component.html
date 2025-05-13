@@ -1,0 +1,194 @@
+<div class="container w-75 my-3 bg-light rounded p-3">
+    <h2>Crear anime</h2>
+    <form #miFormulario="ngForm"
+        (submit)="crear()"
+        class="d-flex flex-column">
+        <div class="estructura">
+            <label for="nombre">Anime</label>
+            <input id="nombre"
+                class="border border-dark rounded inputFormulario"
+                type="text"
+                [(ngModel)]="nombre"
+                name="nombre"
+                minlength="3"
+                maxlength="60"
+                required
+                #nombreRef="ngModel">
+        </div>
+        <div *ngIf="nombreRef.invalid && nombreRef.touched"
+            class="error">
+            <p *ngIf="nombreRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+            <p *ngIf="nombreRef.errors?.['minlength']">
+                Debe tener al menos 3 caracteres.
+            </p>
+            <p *ngIf="nombreRef.errors?.['maxlength']">
+                No puede superar los 60 caracteres.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion"
+                class="form-control border-dark"
+                [(ngModel)]="descripcion"
+                name="descripcion"
+                rows="3"
+                minlength="3"
+                maxlength="5000"
+                #descripcionRef="ngModel">
+            </textarea>
+        </div>
+        <div *ngIf="descripcionRef.invalid && descripcionRef.touched"
+            class="error">
+            <p *ngIf="descripcionRef.errors?.['minlength']">
+                Debe tener al menos 3 caracteres.
+            </p>
+            <p *ngIf="descripcionRef.errors?.['maxlength']">
+                No puede superar los 5000 caracteres.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="visibilidad">Visibilidad</label>
+            <input id="visibilidad"
+                class="form-check-input ms-3"
+                type="checkbox"
+                [checked]="visible">
+        </div>
+        <div class="estructura">
+            <label for="fechaInicio">Fecha de inicio</label>
+            <input id="fechaInicio"
+                class="border border-dark rounded inputFormulario"
+                type="date"
+                required
+                [(ngModel)]="fechaCreacion"
+                #fechaRef="ngModel">
+        </div>
+        <div *ngIf="fechaRef.invalid && fechaRef.touched"
+            class="error">
+            <p *ngIf="fechaRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="fechaFin">Fecha de finalización</label>
+            <input id="fechaFin"
+                class="border border-dark rounded inputFormulario"
+                type="date"
+                [(ngModel)]="fechaFin"
+                name="fechaFin">
+        </div>
+        <div class="estructura">
+            <label for="diaSemana">Día de la semana (0 - Lunes a 6 -
+                Domingo)</label>
+            <input id="diaSemana"
+                class="border border-dark rounded inputFormulario"
+                type="number"
+                [(ngModel)]="diaSemana"
+                name="diaSemana"
+                min=0
+                max=6
+                required
+                #diaSemanaRef="ngModel">
+        </div>
+        <div
+            *ngIf="diaSemanaRef.invalid && diaSemanaRef.touched"
+            class="error">
+            <p *ngIf="diaSemanaRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+            <p *ngIf="diaSemanaRef.errors?.['min']">
+                El valor minimo es 0, representando al lunes.
+            </p>
+            <p *ngIf="diaSemanaRef.errors?.['max']">
+                El valor máximo es 6, representando al domingo.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="imagen">Nombre imagen</label>
+            <input id="imagen"
+                class="border border-dark rounded inputFormulario"
+                type="text"
+                [(ngModel)]="urlImagen"
+                name="imagen"
+                minlength="3"
+                maxlength="60"
+                required
+                #imagenRef="ngModel">
+        </div>
+        <div *ngIf="imagenRef.invalid && imagenRef.touched"
+            class="error">
+            <p *ngIf="imagenRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+            <p *ngIf="imagenRef.errors?.['minlength']">
+                Debe tener al menos 3 caracteres.
+            </p>
+            <p *ngIf="imagenRef.errors?.['maxlength']">
+                No puede superar los 60 caracteres.
+            </p>
+        </div>
+        <div class="estructura">
+            <label for="genero">Género</label>
+            <select id="genero"
+                class="border-dark p-2 rounded inputFormulario"
+                [(ngModel)]="genero"
+                name="genero"
+                required
+                #generoRef="ngModel">
+                <option *ngFor="let genero of listadoGenero"
+                    [value]="genero">
+                    {{ genero }}
+                </option>
+            </select>
+        </div>
+        <div *ngIf="generoRef.invalid && generoRef.touched"
+            class="error">
+            <p *ngIf="generoRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+        </div>
+        <div class="estructura mb-2">
+            <label for="estado">Estado</label>
+            <select id="estado"
+                class="border-dark p-2 rounded inputFormulario"
+                [(ngModel)]="estado"
+                name="estado"
+                required
+                #estadoRef="ngModel">
+                <option *ngFor="let estado of listadoEstado"
+                    [value]="estado">
+                    {{ estado }}
+                </option>
+            </select>
+        </div>
+        <div *ngIf="estadoRef.invalid && estadoRef.touched"
+            class="error">
+            <p *ngIf="estadoRef.errors?.['required']">
+                El campo es obligatorio.
+            </p>
+        </div>
+        <div
+            class="d-flex align-items-center justify-content-center">
+            <button id="botonCrear"
+                type="submit"
+                class="py-2 rounded">
+                Crear
+            </button>
+            <button
+                type="button"
+                class="py-2 rounded w-25 btn btn-primary text-white w-auto ms-5 fw-bold"
+                routerLink="/admin-tools"
+                routerLinkActive="active">
+                <i class="fa-solid fa-circle-arrow-left me-2"></i>
+                Volver
+            </button>
+        </div>
+    </form>
+    <p
+        [ngClass]="mensajeError ? 'container bg-danger rounded text-white p-2 text-center mt-3' 
+                                : 'container bg-success rounded text-white p-2 text-center mt-3'"
+        *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+</div>
