@@ -79,7 +79,7 @@ public class SpringSecurityConfig {
     //Permite generar y obtener el authenticationManager de la aplicacion de Spring Security
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-       return new ProviderManager(daoAuthenticationProvider());
+       return authenticationConfiguration.getAuthenticationManager();
     }
 
     // Configuración CORS para permitir acceso a Angular
@@ -104,16 +104,5 @@ public class SpringSecurityConfig {
         FilterRegistrationBean<org.springframework.web.filter.CorsFilter> corsBean = new FilterRegistrationBean<>(new org.springframework.web.filter.CorsFilter(corsConfigurationSource()));
         corsBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return corsBean;
-    }
-
-    // Proveedor de autenticación basado en una base de datos para autenticar ususarios
-    @Bean
-    DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        // Compara la contraseña introducida por el usuario con la que hay en la BBDD
-        provider.setPasswordEncoder(passwordEncoder());
-        // Buscar al usuario en la base de datos
-        provider.setUserDetailsService(jpaUserDetailsService);
-        return provider;
     }
 }
