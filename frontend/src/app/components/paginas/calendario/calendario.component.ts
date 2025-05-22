@@ -21,6 +21,7 @@ interface DiaCalendario {
     FormsModule
   ],
   templateUrl: './calendario.component.html',
+  styleUrl: './calendario.component.css'
 })
 export class CalendarioComponent implements OnInit {
   email: string = '';
