@@ -6,6 +6,7 @@ import { CuentasAdminsComponent } from "./cuentas-admins/cuentas-admins.componen
 
 @Component({
   selector: 'app-admin-usuarios',
+  standalone: true,
   imports: [HabilitadosComponent, DeshabilitadosComponent, CuentasAdminsComponent],
   templateUrl: './admin-usuarios.component.html',
   styleUrl: './admin-usuarios.component.css'
