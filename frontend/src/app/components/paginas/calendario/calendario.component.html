@@ -11,68 +11,71 @@
         </button>
     </div>
 
-    <table class="table table-bordered text-center">
-        <thead>
-            <tr>
-                <th *ngFor="let dia of diasSemana"
-                    class="bg-success text-white fs-3">
-                    {{ dia }}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let semana of diasCalendario; let i = index">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center calendar-table">
+            <thead>
                 <tr>
-                    <td *ngFor="let dia of semana"
-                        (click)="diaClicado(dia, i)"
-                        class="fs-3 p-4"
-                        [ngClass]="{
+                    <th *ngFor="let dia of diasSemana"
+                        class="bg-success text-white">
+                        {{ dia }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container
+                    *ngFor="let semana of diasCalendario; let i = index">
+                    <tr>
+                        <td *ngFor="let dia of semana"
+                            (click)="diaClicado(dia, i)"
+                            [ngClass]="{
                             'bg-info text-white': dia.esHoy,
                             'bg-light': !dia.esHoy && dia.esMesActual,
                             'text-muted': !dia.esMesActual
                         }">
-                        <div>
-                            <strong>{{ dia.fecha.getDate() }}</strong>
-                            <i *ngIf="dia.eventos.length > 0"
-                                class="fa-solid fa-bell d-inline-block fs-6 align-top text-danger"
-                                title="{{ dia.eventos.length }} evento(s)"></i>
-                        </div>
-                    </td>
-                </tr>
+                            <div>
+                                <strong>{{ dia.fecha.getDate() }}</strong>
+                                <i *ngIf="dia.eventos.length > 0"
+                                    class="fa-solid fa-bell d-inline-block align-top text-danger"
+                                    title="{{ dia.eventos.length }} evento(s)"></i>
+                            </div>
+                        </td>
+                    </tr>
 
-                <!-- Fila de eventos expandida -->
-                <tr *ngIf="indiceSemanaExpandida === i && diaSeleccionado">
-                    <td colspan="7">
-                        <h6>Eventos para el {{ diaSeleccionado.fecha | date:
-                            'fullDate' }}</h6>
-                        <ul class="list-group">
-                            <li
-                                *ngFor="let event of diaSeleccionado.eventos; let j = index"
-                                class="list-group-item d-flex justify-content-between align-items-center">
-                                <input [value]="event.title"
-                                    class="form-control me-2"
-                                    style="max-width: 70%;"
-                                    disabled>
-                                <button class="btn btn-sm btn-danger"
-                                    (click)="eliminarNotificacion(diaSeleccionado, event)">
-                                    Eliminar
-                                </button>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </ng-container>
-        </tbody>
-    </table>
+                    <!-- Fila de eventos expandida -->
+                    <tr *ngIf="indiceSemanaExpandida === i && diaSeleccionado">
+                        <td colspan="7">
+                            <h6>Eventos para el {{ diaSeleccionado.fecha | date:
+                                'fullDate' }}</h6>
+                            <ul class="list-group">
+                                <li
+                                    *ngFor="let event of diaSeleccionado.eventos; let j = index"
+                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                    <input [value]="event.title"
+                                        id="evento"
+                                        class="form-control me-2"
+                                        disabled>
+                                    <button class="btn btn-sm btn-danger"
+                                        (click)="eliminarNotificacion(diaSeleccionado, event)">
+                                        Eliminar
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
 
     <!-- Formulario debajo del calendario -->
     <div *ngIf="mostrarFormulario" class="mt-3">
-        <h5>Agregar evento para {{ fechaSeleccionada?.day }}/{{
+        <h6>Agregar evento para {{ fechaSeleccionada?.day }}/{{
             fechaSeleccionada?.month
-            }}/{{ fechaSeleccionada?.year }}</h5>
+            }}/{{ fechaSeleccionada?.year }}</h6>
         <input type="text"
             [(ngModel)]="nuevoEvento"
-            class="form-control w-25"
+            id="agregarEvento"
+            class="form-control"
             placeholder="Título del evento" />
         <button class="btn btn-primary my-2"
             (click)="agregarEvento()">
