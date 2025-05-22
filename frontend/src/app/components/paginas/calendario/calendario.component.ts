@@ -15,6 +15,7 @@ interface DiaCalendario {
 
 @Component({
   selector: 'app-calendario',
+  standalone: true,
   imports: [
     CommonModule,
     FormsModule
