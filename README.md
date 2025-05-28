@@ -13,7 +13,7 @@ Para facilitar posibles pruebas que se quieran realizar, se proporciona un archi
 
 Finalmente, se incluye la Memoria del proyecto con todo el contenido desarrollado de forma detallada.
 
-### Descarga del proyecto
+## Descarga del proyecto
 Para poder obtener el proyecto y sus documentos en el ordenador, hacemos clic en el botón verde denominado <> Code:
 !["Boton Code"](/imagenes/1_BotonCode.png)
 
