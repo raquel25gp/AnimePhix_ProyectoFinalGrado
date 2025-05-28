@@ -15,13 +15,13 @@ Finalmente, se incluye la Memoria del proyecto con todo el contenido desarrollad
 
 ### Descarga del proyecto
 Para poder obtener el proyecto y sus documentos en el ordenador, hacemos clic en el botón verde denominado <> Code:
-!["Boton Code"](/imagenes/1_BotonCode.PNG)
+!["Boton Code"](/imagenes/1_BotonCode.png)
 
 A continuación, pulsamos cobre Download ZIP (Descargar ZIP):
-!["Pulsar botón"](/imagenes/2_PulsarBoton.PNG)
+!["Pulsar botón"](/imagenes/2_PulsarBoton.png)
 
 Este apartado va a tardar bastante rato debido a los videos incluidos que, aunque han sido reducidos, hacen que el proyecto pese bastante. Tiempo estimado de descarga: **1 hora**.
 
 Una vez descargado el ZIP, cogemos el archivo de la carpeta de descargas y, una vez colocado en la ubicación donde se desee almacenar, hacemos clic derecho sobre el archivo y pulsamos sobre Extraer aquí:
-!["Extraer zip"](/imagenes/3_Extraer.PNG)
+!["Extraer zip"](/imagenes/3_Extraer.png)
 
