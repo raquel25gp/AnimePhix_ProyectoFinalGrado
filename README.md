@@ -7,7 +7,7 @@ El repositorio se encuentra dividido en tres carpetas: backend, database y front
 - Database: contiene el script de la base de datos a ejecutar en MySQL.
 - Frontend: contiene la lógica de la capa de presentación desarrollada en Angular.
 
-Además, se proporciona un Manual con una explicación detallada sobre cómo desplegar la aplicación en un entorno local y una breve guía sobre su uso.
+Además, se proporciona un Manual con una explicación detallada sobre cómo desplegar la aplicación en un entorno local.
 
 Para facilitar posibles pruebas que se quieran realizar, se proporciona un archivo de texto con las cuentas de usuarios creadas en el script y sus respectivas contraseñas.
 
