@@ -13,11 +13,13 @@ Para facilitar posibles pruebas que se quieran realizar, se proporciona un archi
 
 Finalmente, se incluye la Memoria del proyecto con todo el contenido desarrollado de forma detallada.
 
+*La carpeta imágenes está añadida para poder cargar las imagenes del presente README.*
+
 ## Descarga del proyecto
 Para poder obtener el proyecto y sus documentos en el ordenador, hacemos clic en el botón verde denominado <> Code:
 !["Boton Code"](/imagenes/1_BotonCode.png)
 
-A continuación, pulsamos cobre Download ZIP (Descargar ZIP):
+A continuación, pulsamos sobre Download ZIP (Descargar ZIP):
 !["Pulsar botón"](/imagenes/2_PulsarBoton.png)
 
 Este apartado va a tardar bastante rato debido a los videos incluidos que, aunque han sido reducidos, hacen que el proyecto pese bastante. Tiempo estimado de descarga: **1 hora**.
